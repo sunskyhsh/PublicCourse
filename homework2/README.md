@@ -15,7 +15,13 @@ Try to visualize the Pointcloud first (You can use any visualization method that
 **What to submit:** Your C++ code with two histogram figures and write down a short description about what you find from those histograms.
 
 ### 2. Separate the ground points from Pointcloud(**Open-ended task**)
-Now you are familiar with our Pointcloud data and let's start to work on some more advanced tasks! In order to determine the real obstacles in Pointcloud, we first need to know which points belong to the ground and which are not. In autonomous driving domain, the ground can be considered as the area that our vehicle can drive without considering the traffic regulation.(Some ground images are included under homework2 folder, ground points are marked in red.) Ground detection is an important task for 3D lidar perception. Let's try to separate the ground from Pointcloud by utilizing the characteristics of its point distribution. 
+Now you are familiar with our Pointcloud data and let's start to work on some more advanced tasks! In order to determine the real obstacles in Pointcloud, we first need to know which points belong to the ground and which are not. In autonomous driving domain, the ground can be considered as the area that our vehicle can drive without considering the traffic regulation. For example,
+**Pointcloud with ground points marked in red**
+![alt text](https://github.com/ponyai/PublicCourse/blob/master/homework2/pointcloud_with_ground.png)
+**Ground points only**
+![alt text](https://github.com/ponyai/PublicCourse/blob/master/homework2/ground_only.png)
+
+Ground detection is an important task for 3D lidar perception. Let's try to separate the ground from Pointcloud by utilizing the characteristics of its point distribution. 
 **Note, those are open-ended tasks, try your best to work out a reasonable solution for now and you will learn better method along with this course.**
 
 **What to submit:** Your C++ code to identify the ground with a screen shot of the pointcloud without ground and a short description about what your method is.
@@ -26,6 +32,6 @@ In the given sample data, the image is expressed in RGB color space. But in a lo
 **What to submit:** Your C++ code to convert the color jpg image to grayscale.
 
 ### 4. Lane boundary detection(**Open-ended task**)
-Try to use basic computer vision method to find lane boundaries in images. Lane boundary are those white painted lines on the road indicating the paths that vehicle should follow. OpenCV has provided a lot of feature detection [APIs](https://docs.opencv.org/2.4/modules/imgproc/doc/feature_detection.html). You may find some of them are very useful in this task.
+Try to use basic computer vision method to find lane boundaries in images. Lane boundary are those white painted lines on the road indicating the paths that vehicle should follow. [Example](https://baike.baidu.com/item/%E9%81%93%E8%B7%AF%E4%BA%A4%E9%80%9A%E6%A0%87%E7%BA%BF/5381330). OpenCV has provided a lot of feature detection [APIs](https://docs.opencv.org/2.4/modules/imgproc/doc/feature_detection.html). You may find some of them are very useful in this task.
 
 **What to submit:** Your C++ code to detect lane boundaries with screen shot about the results and a short description about what your method is.
