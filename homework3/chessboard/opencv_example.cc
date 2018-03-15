@@ -6,6 +6,7 @@ using namespace cv;
 
 int main() {
   cv::Mat image;
+  // ATTENTION!!! : please use absolute path for reading the data file.
   image = imread("homework3/chessboard/chessboard.png", CV_LOAD_IMAGE_COLOR);
   namedWindow("chessboard");
   imshow("chessboard", image);
