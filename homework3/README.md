@@ -28,14 +28,13 @@ Your task is as follows:
 
 ### 3. Ground detection (**Open-ended task**)
 In homework2, we provided some frames of [pointcloud](https://github.com/ponyai/PublicCourseInternalReview/blob/master/homework2/sample_data.tar.gz) and [a picture for ground points](https://github.com/ponyai/PublicCourseInternalReview/blob/master/homework2/ground_only.png).
-Actually, the picture was trivially generated from existing detected ground.
-It is hard to generate ground from single frame 32c Lidar data.
+Actually, It is hard to generate ground from single frame 32c Lidar data.
 Detecting ground typically requires multiple frames to be accurate.
 
-Your task is to detect the ground based on multiple frames.
-This could be done by the following three steps.
-- convert the pointclouds of multiple continuous frames to world coordinate system.
-- get the ground according to the method taught in class.
-- outputs the result using OpenCV or other proper tools. The result should contain only overlaid ground points from the 100 frames and display in world coordinate system.
+Your task is to detect the ground based on multiple adjacent pointcloud frames.
+This could be done by the following steps.
+- convert the pointcloud of multiple continuous frames to world coordinate system and you will get an accumulated pointcloud with a lot more points compared to one single pointcloud.
+- Try the following method to improve your ground detection method: 1. Project the accumulated pointcloud to an image with each pixel represents a 0.5m by 0.5m square on XY plane in world coordinate.(You can use cv::Mat to represent an image.) For example, an image with size 200 by 200 and resolution 0.5m can represents the area 100m by 100m on XY plane in world coordinate; 2. Use the lowest Z value in the world coordinate system as the value for each pixel; 3. Given a reasonable threshold, the points which are below the lowest Z value plus this predefined threshold are considered as ground points. 
+- outputs the ground image by using OpenCV or other proper tools. 
 
-**What to submit:** Your C++ code to generate the ground points.
+**What to submit:** Your C++ code to find the ground points and your ground image.
