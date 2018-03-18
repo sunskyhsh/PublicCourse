@@ -1,11 +1,6 @@
+homework2/sample_data
 bazel-*
 .idea/
 .vscode/
 cmake-build-debug
 CMakeLists.txt
-bazel-PublicCourse
-bazel-bin
-bazel-genfiles
-bazel-out
-bazel-testlogs
-homework2/sample_data
