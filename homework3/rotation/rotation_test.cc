@@ -36,13 +36,12 @@ TEST(Rotation, AngleAxisTest) {
               -0.02020334, -0.00972537, 0.99974821;
   auto angle_axis = ToAngleAxis(rotation);
   EXPECT_NEAR(1.0, angle_axis.axis().length(), 3e-2)
-  EXPECT_NEAR(0.1, std::abs(angle_axis.angle()), 3e-2);
+  EXPECT_NEAR(0.037, std::abs(angle_axis.angle()), 3e-2);
   EXPECT_NEAR(-2 * angle_axis.angle() * angle_axis.axis().x(),
               angle_axis.angle() * angle_axis.axis().y(), 3e-2);
   EXPECT_NEAR(-3 * angle_axis.angle() * angle_axis.axis().x(),
               angle_axis.angle() * angle_axis.axis().z(), 3e-2);
 }
-
 
 }  // namespace
 }  // namespace homework3
