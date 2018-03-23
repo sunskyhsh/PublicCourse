@@ -20,9 +20,9 @@ TEST(Rotation, BasicTest) {
 
 TEST(Rotation, RollPitchYawTest) {
   Eigen::Matrix3d rotation;
-  rotation << 0.97517033, -0.0978434, -0.19866933,
-              0.03695701, 0.95642509, -0.28962948,
-              0.21835066, 0.27509585, 0.93629336;
+  rotation << 0.97517033, -0.153792, -0.15934508,
+              0.0978434, 0.94470249, -0.31299183,
+              0.19866933, 0.28962948, 0.93629336;
   auto roll_pitch_yaw = ToRollPitchYaw(rotation);
   EXPECT_NEAR(0.1, roll_pitch_yaw.x(), 1e-3);
   EXPECT_NEAR(-0.2, roll_pitch_yaw.y(), 1e-3);

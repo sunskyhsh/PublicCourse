@@ -15,7 +15,7 @@ Your task is to implement the conversion from rotation matrix to roll-pitch-yaw 
 
 **What to submit:** Your C++ implementation of rotation/rotation_test.cc to pass the unit tests non-trivially. Note, you should implement the conversion by yourself instead of using any existing APIs.
 
-** Note that the test has been updated. Please update to the latest version. Thanks to @hqztrue for pointing out the mistake. **
+** Note that the test has been updated. Please update to the latest version. Thanks to @hqztrue and @Chenyao2333 for pointing out the mistakes. **
 
 ### 2. Chessboard distortion
 
