@@ -30,7 +30,7 @@ In this homework, we also provide you some object label (Defined in **interface.
 
 _*Press 'n' to display the next frame._
 ![alt text](https://github.com/ponyai/PublicCourse/blob/master/homework4/pointcloud_viewer.png)
-**NOTE, you can also use this viewer to visualize the Pointcloud data in Homework1, but you need to manully move all folders with device name to a parent folder named with 'select', sorry about this inconvenience.**
+**NOTE, you can also use this viewer to visualize the Pointcloud data in Homework1, but you need to manually move all folders with device name to a parent folder named with 'select', sorry about this inconvenience.**
 
 Let's first get familiar with **interface.object_labeling.ObjectLabels** and **interface.perception.PerceptionObstacle** proto definitions. Your task is to extract object points from Pointcloud based on given labeled bounding box and fill them into proper field in **interface.perception.PerceptionObstacle**. Values for the other fields in this proto should be similar as they are in the label proto. Feel free to modify the viewer code to visualize the obstacle points or project them onto images in order to verify your implementation.
 
