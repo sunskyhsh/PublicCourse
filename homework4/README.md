@@ -16,6 +16,8 @@ Read code comments carefully before writing your code. We also provide you a sim
 
 `bazel run -c opt //homework4:camera_lidar_fusion_main  -- --pony_data_dir PONY_DATA_DIR`
 
+_*Press any key for displaying the next frame._
+
 Once you have the correct implementation, you should see a similar result as follows, **NOTE** the color of projected points is based on its depth, please read the code in **camera_lidar_fusion_main.cc** if you are interested.
 (Add the image here.)
 
@@ -25,6 +27,8 @@ Once you have the correct implementation, you should see a similar result as fol
 In this homework, we also provide you some object label (Defined in **interface.object_labeling.ObjectLabels**) files which you can use the following cmd to visualize:
 
 `bazel run -c opt //homework4:pointcloud_viewer_main -- --pony_data_dir PONY_DATA_DIR`
+
+_*Press 'n' for displaying the next frame._
 
 (Add the image here.)
 
