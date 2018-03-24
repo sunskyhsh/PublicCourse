@@ -10,15 +10,14 @@ let's implement simple lane boundary detection based on the method mentioned in 
 **What to submit:** Your C++ code to detect simple lane boundary based on the above method.
 
 ### 2. Project Pointcloud to image.
-There are two main steps for projecting the Pointcloud to image. 
-First, project Pointcloud from Lidar local coordinate system to image plane and then project 3D point in camera coordinate system to image plane. 
+There are two main steps for projecting the Pointcloud to image. First, project Pointcloud from Lidar local coordinate system to image plane and then project 3D points from camera coordinate system to image plane. 
 Please implement functions **Project3dPointToImage** and **ProjectPointCloudToImage** in file **camera_lidar_fusion_utils.cc**. 
-Read code comments carefully before writing the code. We also provide you a simple viewer to visualize the fusion results, you can use it with the data provided in this homework.
+Read code comments carefully before writing your code. We also provide you a simple viewer to visualize the fusion result, you can use it with the data provided along with this homework.
 
 `bazel run -c opt //homework4:camera_lidar_fusion_main  -- --pony_data_dir PONY_DATA_DIR`
 
-If you have the correct implementation, you should see a similar result as follows, **NOTE** the color of projected points is based on its depth, please read the code in **camera_lidar_fusion_main.cc** if you are interested.
-
+Once you have the correct implementation, you should see a similar result as follows, **NOTE** the color of projected points is based on its depth, please read the code in **camera_lidar_fusion_main.cc** if you are interested.
+(Add the image here.)
 
 **What to submit:** Your implementaion of above two functions.
 
@@ -27,10 +26,9 @@ In this homework, we also provide you some object label (Defined in **interface.
 
 `bazel run -c opt //homework4:pointcloud_viewer_main -- --pony_data_dir PONY_DATA_DIR`
 
-Your task is first getting familiar with both proto definitions. 
-Then please try to extract object points from Pointcloud based on the labeled bounding box and fill them into proper field in **interface.perception.PerceptionObstacle**. 
-Values for the other fields in this proto should be similar as they are in the label proto. 
-Feel free to modify the viewer code to visualize the obstacle points or project them onto images.
+(Add the image here.)
 
-**What to submit:** Your C++ code to extract obstacle points and generate a list of **interface.perception.PerceptionObstacle** for each Pointcloud.
+Let's get familiar with **interface.object_labeling.ObjectLabels** and **interface.perception.PerceptionObstacle** proto definitions first. Your task is to extract object points from Pointcloud based on given labeled bounding box and fill them into proper field in **interface.perception.PerceptionObstacle**. Values for the other fields in this proto should be similar as they are in the label proto. Feel free to modify the viewer code to visualize the obstacle points or project them onto images in order to verify your implementation.
+
+**What to submit:** Your C++ code to extract obstacle points and generate a list of **interface.perception.PerceptionObstacle** from each Pointcloud.
 
