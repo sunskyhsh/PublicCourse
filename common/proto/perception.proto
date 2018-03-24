@@ -4,12 +4,6 @@ package interface.perception;
 
 import "common/proto/geometry.proto";
 
-enum MotionState {
-  UNKNOWN_STATE = 0;
-  STATIC = 1;
-  MOVING = 2;
-}
-
 enum ObjectType {
   UNKNOWN_TYPE = 0;
   CAR = 1;
@@ -19,21 +13,10 @@ enum ObjectType {
   // Fine category for unknown objects.
   UNKNOWN_TRAFFIC_CONE = 100;
   UNKNOWN_ROAD_CONSTRUCTION_BOARD = 101;
-  UNKNOWN_TREE = 102;
   UNKNOWN_TRAFFIC_SIGN = 103;
-  UNKNOWN_BUILDING = 104;
-  UNKNOWN_PAVEMENT = 105;
-  UNKNOWN_POLE = 106;
-  UNKNOWN_LANE_MAKER = 107;
-  UNKNOWN_SKY = 108;
-  UNKNOWN_OTHERS = 109;
 
   // Fine category for cars.
   CAR_LARGE = 201;
-
-  PEDESTRIAN_CROWD = 301;
-  // Like express delivery trike.
-  CYCLIST_TRIKE = 401;
 };
 
 
@@ -41,20 +24,14 @@ message PerceptionObstacle {
   // obstacle ID.
   optional string id = 1;
 
-  // world coordinates of the obstacle center, in meters.
-  optional interface.geometry.Point3D smooth_center = 2;
-
-  // Smooth heading in the world coordinate system.
-  optional double smooth_heading = 3;
+  // heading in the world coordinate system.
+  optional double heading = 3;
 
   // Height of the obstacle, in meters.
   optional double height = 7;
 
   // Points for bottom polygon.
   repeated interface.geometry.Point3D polygon_point = 5;
-
-  // Measurement timestamp of senser data in the obstacle, in seconds.
-  optional double measurement_timestamp = 6;
 
   // Object type.
   optional ObjectType type = 8;
@@ -68,5 +45,5 @@ message PerceptionObstacles {
   repeated PerceptionObstacle obstacle = 2;
 
   // Processed Velodyne data time.
-  optional double velodyne_data_timestamp = 3;
+  optional double timestamp = 3;
 }
