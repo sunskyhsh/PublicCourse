@@ -16,10 +16,10 @@ Read code comments carefully before writing your code. We also provide you a sim
 
 `bazel run -c opt //homework4:camera_lidar_fusion_main  -- --pony_data_dir PONY_DATA_DIR`
 
-_*Press any key for displaying the next frame._
-
 Once you have the correct implementation, you should see a similar result as follows, **NOTE** the color of projected points is based on its depth, please read the code in **camera_lidar_fusion_main.cc** if you are interested.
-(Add the image here.)
+
+_*Press any key for displaying the next frame._
+![alt text](https://github.com/ponyai/PublicCourse/blob/master/homework4/fusion.png)
 
 **What to submit:** Your implementaion of above two functions.
 
@@ -29,8 +29,7 @@ In this homework, we also provide you some object label (Defined in **interface.
 `bazel run -c opt //homework4:pointcloud_viewer_main -- --pony_data_dir PONY_DATA_DIR`
 
 _*Press 'n' for displaying the next frame._
-
-(Add the image here.)
+![alt text](https://github.com/ponyai/PublicCourse/blob/master/homework4/pointcloud_viewer.png)
 
 Let's get familiar with **interface.object_labeling.ObjectLabels** and **interface.perception.PerceptionObstacle** proto definitions first. Your task is to extract object points from Pointcloud based on given labeled bounding box and fill them into proper field in **interface.perception.PerceptionObstacle**. Values for the other fields in this proto should be similar as they are in the label proto. Feel free to modify the viewer code to visualize the obstacle points or project them onto images in order to verify your implementation.
 
