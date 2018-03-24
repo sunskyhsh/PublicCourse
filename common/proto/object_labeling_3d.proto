@@ -1,0 +1,46 @@
+syntax = "proto2";
+
+package interface.object_labeling;
+
+import "common/proto/geometry.proto";
+import "common/proto/perception.proto";
+
+message ObjectLabel {
+  // Track ID
+  optional string id = 1;
+
+  // Object type.
+  optional interface.perception.ObjectType type = 2;
+
+  // Heading is defined in world frame (ENU)
+  // The heading is angle between object's heading direction and X axis (East)
+  optional double heading = 3;
+  optional double speed = 12 [default = 0.0];
+
+  // Object center relative to vehicle position.
+  optional double center_x = 4;
+  optional double center_y = 5;
+  optional double center_z = 6;
+
+  // Length is the measurement of the edge along Y axis in object's local frame.
+  optional double length = 7;
+  // Width is the measurement of the edge along X axis in object's local frame.
+  optional double width = 8;
+  optional double height = 9;
+
+  optional interface.perception.MotionState motion_state = 10 [default = UNKNOWN_STATE];
+  optional interface.geometry.Polygon polygon = 11;
+}
+
+message ObjectLabels {
+  // Log file ID.
+  optional string log_file_id = 1;
+
+  // The offset to world coordinate system (ENU).
+  optional double offset_x = 2;
+  optional double offset_y = 3;
+  optional double offset_z = 4;
+
+  repeated ObjectLabel object = 5;
+  optional double timestamp = 6;
+}
