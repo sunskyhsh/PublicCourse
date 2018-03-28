@@ -42,9 +42,9 @@ bazel run //homework5:map_visualizer_main -- --route_file_path {PATH_TO_CODEBASE
 
 In the window, the green flag represents the `start_point`, and the red flag represents the `end_point`. The route connected by `route_point` is highlighted with green color. 
 
-You could find five route requests named `route_request_x.txt` in the directory `homework5/data/routes/`. In this files, `start_point` and `end_point` of the route are specified, but the route is missing. Your task is to find an appropriate route from `start_point` to `end_point`. Note that the route must follow the lane's direction. 
+You could find five route requests named `route_request_x.txt` in the directory `homework5/data/routes/`. In these files, `start_point` and `end_point` of the route are specified, but the `route_point`s are missing. Your task is to find an appropriate route from `start_point` to `end_point`. Note that the route must follow the lane's direction. 
 
 **What to submit:** 
-1. Five protobuf text files named `route_result_x.txt` which contain the route from `start_point` to `end_point` specified in `route_request_x.txt`, and the corresponding screenshots of the routes taken from `map_visualizer`. Please read the `common/proto/route.proto` to understand the requirement of the `route_point`. 
+1. Five protobuf text files named `route_result_x.txt` which contain the route from `start_point` to `end_point`, and the corresponding screenshots of the routes taken from `map_visualizer`. Please read the `common/proto/route.proto` to understand the requirement of the `route_point`. 
 2. The source code that generates the routes. Brief comments are required in the source code for others to understand your code. 
 
