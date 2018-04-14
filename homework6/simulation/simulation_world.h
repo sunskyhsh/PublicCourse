@@ -48,15 +48,7 @@ class SimulationWorld {
 
  private:
   bool DetermineReachedDestination(const interface::agent::VehicleStatus& vehicle_status,
-                                   const interface::agent::RouteStatus& route_status) {
-    math::Vec2d pos_in_router_request(route_status.destination().x(),
-                                      route_status.destination().y());
-    math::Vec2d current_pos(vehicle_status.position().x(), vehicle_status.position().y());
-    math::Vec3d current_velocity(vehicle_status.velocity().x(), vehicle_status.velocity().y(),
-                                 vehicle_status.velocity().z());
-    return pos_in_router_request.DistanceToPoint(current_pos) < 2.0 &&
-           current_velocity.Length() < 0.3;
-  }
+                                   const interface::agent::RouteStatus& route_status);
   void AddVehicleAgent(const std::string& name);
   void UpdateSimulationTime();
   void UpdateTripInfo();

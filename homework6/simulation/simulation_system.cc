@@ -27,6 +27,7 @@ void SimulationSystem::Initialize() {
 }
 
 void SimulationSystem::Start() {
+  LOG(INFO) << "Simulation started";
   std::unordered_map<std::string, interface::control::ControlCommand> control_command_map;
   auto system_time = std::chrono::steady_clock::now();
   while (true) {

@@ -14,6 +14,7 @@ int main(int argc, char* argv[]) {
   QCoreApplication::setOrganizationDomain("pony.ai");
   QCoreApplication::setApplicationName("Simulation");
 
+  FLAGS_logtostderr = true;
   display::SimulationMainWindow main_window(nullptr);
 
   app.installEventFilter(&main_window);

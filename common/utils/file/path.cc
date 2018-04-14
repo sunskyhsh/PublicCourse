@@ -179,7 +179,6 @@ namespace {
 const boost::filesystem::path kProjectRootMarkerFile(".pony_ai_root.md");
 
 boost::filesystem::path GetProjectRootPath(boost::filesystem::path path) {
-  LOG(INFO) << "GetProjectRootPath(" << path << ")";
   for (; path.has_parent_path(); path = path.parent_path()) {
     if (boost::filesystem::exists(path / kProjectRootMarkerFile)) {
       return path;

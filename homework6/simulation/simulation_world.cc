@@ -49,9 +49,11 @@ void SimulationWorld::AddVehicleAgent(const std::string& name) {
 
 void SimulationWorld::UpdateTripInfo() {
   for (auto& iter : agent_status_map_) {
+    const std::string& name = iter.first;
     interface::agent::AgentStatus& agent_status = iter.second;
     if (agent_status.simulation_status().is_alive()) {
       if (DetermineReachedDestination(agent_status.vehicle_status(), agent_status.route_status())) {
+        LOG(ERROR) << "Agent:" << name << "reached the destination!";
         agent_status.clear_route_status();
         agent_status.mutable_simulation_status()->set_is_finished(true);
       }
@@ -95,6 +97,17 @@ bool SimulationWorld::DetermineSimulationFinished() {
     }
   }
   return true;
+}
+
+bool SimulationWorld::DetermineReachedDestination(const interface::agent::VehicleStatus& vehicle_status,
+                                 const interface::agent::RouteStatus& route_status) {
+  math::Vec2d pos_in_router_request(route_status.destination().x(),
+                                    route_status.destination().y());
+  math::Vec2d current_pos(vehicle_status.position().x(), vehicle_status.position().y());
+  math::Vec3d current_velocity(vehicle_status.velocity().x(), vehicle_status.velocity().y(),
+                               vehicle_status.velocity().z());
+  return pos_in_router_request.DistanceToPoint(current_pos) < 2.0 &&
+      current_velocity.Length() < 0.3;
 }
 
 };  // namespace simulation

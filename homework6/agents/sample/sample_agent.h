@@ -13,7 +13,7 @@
 namespace sample {
 
 // A sample vehicle agent for route 1
-// This agent will always run in straight. It will accelerate to the velocity slightly over 5m/s,
+// This agent will always run in straight. It will accelerate to the speed slightly over 5m/s,
 // and keeps running with the speed over 5m/s until reaches destination.
 
 class SampleVehicleAgent : public simulation::VehicleAgent {
