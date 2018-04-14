@@ -239,3 +239,18 @@ std::string GetProjectRootPath() {
 
 }  // namespace path
 }  // namespace file
+
+namespace utils {
+namespace path {
+
+std::string GetVehicleParamsPath() {
+  return file::path::Join(file::path::GetProjectRootPath(), "common", "data", "vehicle_params",
+                          "vehicle_params.txt");
+}
+
+std::string Get3dModelsDirectory() {
+  return file::path::Join(file::path::GetProjectRootPath(), "common", "data", "3d_models");
+}
+
+}
+}  // namespace utils
