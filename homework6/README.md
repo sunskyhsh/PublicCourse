@@ -75,7 +75,7 @@ Your derived class needs to implement two main virtual functions in the base cla
 
 The `AgentStatus` is the proto object that represents the complete status that an agent needs to know. The definition of it could be found at `common/proto/agent_status.proto`. It contains the simulation status, the vehicle status and the route status .
 
-The `SampleVehicleAgent` is registered into an agent factory in `homework6/agents/agents.cc` with a macro `REGISTER_CLASS`. When you implement your own agent, you also need to register the class in this file with your agent's type name. 
+The `SampleVehicleAgent` is registered into an agent factory in `homework6/agents/agents.cc` with a static variable. When you implement your own agent, you also need to register the class in this file with your agent's type name. 
 
 The config file `homework6/data/routes/simulation_config_1.txt` defines the simulation task which the agent needs to finish. It contains the agent's type name, instance name (could be any string) and the `start_point`/`end_point` of the route. The agent starts from the start_point, and needs to reach the destination in static state. When you start to run simulation with your own agent, you need to change the agent_type to your own agent's type name, the same as the registered name in `homework6/agents/agents.cc`. The criteria of 
 
