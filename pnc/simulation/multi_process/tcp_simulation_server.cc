@@ -174,6 +174,8 @@ utils::Status TcpSimulationServer::RunOneIteration() {
                   response.get().iteration_response().control_command());
               agent_response_map_[name].set_iteration_time_cost(
                   response.get().iteration_response().time_cost());
+              agent_response_map_[name].mutable_debug_variables()->CopyFrom(
+                  response.get().iteration_response().debug_variables());
             }
           } else {
             LOG(ERROR) << "Server does not receive agent: " << name

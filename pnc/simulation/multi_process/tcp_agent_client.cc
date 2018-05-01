@@ -75,6 +75,7 @@ utils::Status TcpAgentClient::Start() {
       if (!agent_status_.simulation_status().is_alive()) {
         break;
       }
+      vehicle_agent_->clear_debug_variables();
       interface::comms::Response response;
       auto start = std::chrono::system_clock::now();
       interface::control::ControlCommand control_command =
@@ -83,6 +84,8 @@ utils::Status TcpAgentClient::Start() {
       std::chrono::duration<double> diff = end - start;
       response.mutable_iteration_response()->set_time_cost(diff.count());
       response.mutable_iteration_response()->mutable_control_command()->CopyFrom(control_command);
+      response.mutable_iteration_response()->mutable_debug_variables()->CopyFrom(
+          vehicle_agent_->debug_variables());
       RETURN_IF_ERROR(connection_->BlockingSendMessage(response));
     }
   }
