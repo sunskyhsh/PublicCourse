@@ -192,6 +192,7 @@ void SimulationWorld::UpdatePerceptionStatus() {
           DistanceToObstacle(agent_status.vehicle_status(), obstacle) <
               kMaximumPerceptionObstacleDistance) {
         agent_status.mutable_perception_status()->add_obstacle()->CopyFrom(obstacle);
+        agent_status.mutable_perception_status()->add_traffic_light()->CopyFrom(traffic_light_status_);
       }
     }
   }
@@ -223,7 +224,7 @@ bool SimulationWorld::DetermineReachedDestination(
 
 bool SimulationWorld::DeterminSimulationFinished() {
   // At most run 30 min in simulation time
-  if (current_time_ > 30.0 * 60 * 100) {
+  if (current_time_ > 30.0 * 60) {
     return true;
   }
   for (auto& iter : agent_status_map_) {
