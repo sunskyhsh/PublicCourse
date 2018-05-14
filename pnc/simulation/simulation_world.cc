@@ -192,9 +192,9 @@ void SimulationWorld::UpdatePerceptionStatus() {
           DistanceToObstacle(agent_status.vehicle_status(), obstacle) <
               kMaximumPerceptionObstacleDistance) {
         agent_status.mutable_perception_status()->add_obstacle()->CopyFrom(obstacle);
-        agent_status.mutable_perception_status()->add_traffic_light()->CopyFrom(traffic_light_status_);
       }
     }
+    agent_status.mutable_perception_status()->add_traffic_light()->CopyFrom(traffic_light_status_);
   }
 }
 
