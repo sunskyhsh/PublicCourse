@@ -65,6 +65,9 @@ std::vector<math::Box2d> MockedObstacleAgent::RunOneIteration(
       headings_[i] = RandomDouble(0, 2 * M_PI);
       continue;
     }
+    // Predict the center of the pedestrian after one second
+    math::Vec2d future_center = centers_[i] +
+        math::Vec2d(std::cos(headings_[i]), std::sin(headings_[i])) * speeds_[i] * 1.0;
     bool near_vehicle = false;
     for (auto& iter : agent_status_map) {
       if (!iter.second.simulation_status().is_alive()) {
@@ -72,7 +75,7 @@ std::vector<math::Box2d> MockedObstacleAgent::RunOneIteration(
       }
       const auto& vehicle_status = iter.second.vehicle_status();
       math::Box2d vehicle_box = utils::vehicle::GetVehicleBox(vehicle_status, vehicle_params_);
-      if (vehicle_box.HasOverlapWithBox(math::Box2d(centers_[i], headings_[i], kLength, kWidth))) {
+      if (vehicle_box.HasOverlapWithBox(math::Box2d(future_center, headings_[i], kLength, kWidth))) {
         near_vehicle = true;
         break;
       }
