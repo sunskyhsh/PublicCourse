@@ -8,7 +8,6 @@
 #include <vector>
 
 #include <google/protobuf/message.h>
-#include <gtest/gtest_prod.h>
 #include <netinet/tcp.h>
 
 #include "pnc/simulation/multi_process/net_client_interface.h"
