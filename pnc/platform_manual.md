@@ -68,6 +68,8 @@ We provide a tool `replay_main` to help you easily replay a simulation. You coul
 bazel run -c opt //pnc:replay_main -- --simulation_log_file_path={file_path}                    
 ```
 
+Note that you could double-click on the slider to perform seek operation in replay. 
+
 ## Simulation Engine
 
 Simulation engine is the internal engines that run agents and collect their control commands. Here we provide two simulation engines: 
