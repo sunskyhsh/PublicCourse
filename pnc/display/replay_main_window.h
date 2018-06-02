@@ -20,8 +20,12 @@ class ReplayMainWindow : public MainWindow {
     SetupMenu();
   }
 
-  virtual void timerEvent(QTimerEvent* /*event*/) override {
+  void timerEvent(QTimerEvent* /*event*/) override {
     data_ = replay_system_->FetchData();
+    if (!perspective_menu_setup_) {
+      SetupPerspectiveMenu();
+      perspective_menu_setup_ = true;
+    }
     painter_widget_->set_simulation_system_data(data_);
     painter_widget_->update();
     std::unordered_map<std::string, interface::display::VariableViewList> variable_view_data;
@@ -61,9 +65,37 @@ class ReplayMainWindow : public MainWindow {
     connect(action, &QAction::triggered, this, [this] { QApplication::exit(0); });
   }
 
+  void SetupPerspectiveMenu() {
+    QAction* action = nullptr;
+    QMenu* menu = nullptr;
+    // Play
+    menu = menuBar()->addMenu(tr("&Perspective"));
+
+    action = menu->addAction(tr("&God"));
+    connect(action, &QAction::triggered, this,
+            [this] { painter_widget_->SetVehiclePerspective(""); });
+
+    menu->addSeparator();
+
+    for (const auto& agent_data : data_.vehicle_agent()) {
+      vehicle_name_list_.push_back(agent_data.name());
+    }
+
+    for (const std::string& name : vehicle_name_list_) {
+      action = menu->addAction(tr(name.data()));
+      connect(action, &QAction::triggered, this,
+              [this, &name] {
+                painter_widget_->SetVehiclePerspective(name); });
+    }
+  }
+
   std::unique_ptr<simulation::ReplaySystem> replay_system_;
   std::thread replay_system_thread_;
 
   interface::simulation::SimulationSystemData data_;
+
+  std::vector<std::string> vehicle_name_list_;
+  bool perspective_menu_setup_ = false;
+
 };
 };

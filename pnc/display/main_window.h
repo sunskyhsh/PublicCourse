@@ -117,7 +117,7 @@ class MainWindow : public QMainWindow {
 
     action = menu->addAction(tr("&God"));
     connect(action, &QAction::triggered, this,
-            [this] { painter_widget_->SetVehiclePespective(""); });
+            [this] { painter_widget_->SetVehiclePerspective(""); });
 
     menu->addSeparator();
 
@@ -125,13 +125,13 @@ class MainWindow : public QMainWindow {
       const std::string& name = agent_config.name();
       action = menu->addAction(tr(name.data()));
       connect(action, &QAction::triggered, this,
-              [this, &name] { painter_widget_->SetVehiclePespective(name); });
+              [this, &name] { painter_widget_->SetVehiclePerspective(name); });
     }
     if (simulation_config_.add_keyboard_controlled_agent()) {
       std::string name = std::string(simulation::kKeyboardControlledAgentName);
       action = menu->addAction(tr(name.data()));
       connect(action, &QAction::triggered, this, [this] {
-        painter_widget_->SetVehiclePespective(
+        painter_widget_->SetVehiclePerspective(
             std::string(simulation::kKeyboardControlledAgentName));
       });
     }
