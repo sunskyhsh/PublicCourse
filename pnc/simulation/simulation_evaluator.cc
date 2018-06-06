@@ -154,6 +154,12 @@ void SimulationEvaluator::EvaluateRedLightRunning(AgentStatusMap* agent_status_m
         continue;
       }
 
+      pnc::map::Segment segment(math::Vec2d(stop_line.point(0).x(), stop_line.point(0).y()),
+                                math::Vec2d(stop_line.point(1).x(), stop_line.point(1).y()));
+      if (segment.DistanceToPoint(math::Vec2d(x, y)) < 0.1) {
+        continue;
+      }
+
       int side = GetSide(x, y, stop_line.point(0).x(), stop_line.point(0).y(),
                          stop_line.point(1).x(), stop_line.point(1).y());
       if (side > 0) {
