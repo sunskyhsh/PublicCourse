@@ -143,9 +143,12 @@ void SimulationEvaluator::EvaluateRedLightRunning(AgentStatusMap* agent_status_m
       if (traffic_light_color_map_[traffic_light_id] != interface::map::Bulb::RED) {
         continue;
       }
-      math::Vec2d stop_line_heading_unit = math::Vec2d(stop_line.point(1).x() - stop_line.point(0).x(),
-                                                       stop_line.point(1).y() - stop_line.point(0).y()).Rotate90();
-      math::Vec2d vehicle_heading_unit = math::Vec2d::FromUnit(math::transform::GetYaw(math::transform::ToEigen(iter.second.vehicle_status().orientation())));
+      math::Vec2d stop_line_heading_unit =
+          math::Vec2d(stop_line.point(1).x() - stop_line.point(0).x(),
+                      stop_line.point(1).y() - stop_line.point(0).y())
+              .Rotate90();
+      math::Vec2d vehicle_heading_unit = math::Vec2d::FromUnit(math::transform::GetYaw(
+          math::transform::ToEigen(iter.second.vehicle_status().orientation())));
       // If vehicle is not heading to traffic light, not evaluate red-light running
       if (vehicle_heading_unit.InnerProd(stop_line_heading_unit) < 0) {
         continue;
