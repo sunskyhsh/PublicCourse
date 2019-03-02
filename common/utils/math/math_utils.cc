@@ -11,17 +11,6 @@
 namespace math {
 namespace {
 
-// Returns x0 + k * x1
-std::vector<double> LinearTransform(const std::vector<double>& x0, double k,
-                                    const std::vector<double>& x1) {
-  CHECK_EQ(x0.size(), x1.size());
-  std::vector<double> r(x0.size());
-  for (int i = 0; i < x0.size(); i++) {
-    r[i] = x0[i] + k * x1[i];
-  }
-  return r;
-}
-
 template <typename T>
 T PercentileIndex(T num_data_points, double fractional_percentage) {
   CHECK(fractional_percentage >= 0.0 && fractional_percentage <= 1.0);
@@ -122,60 +111,6 @@ std::vector<double> PercentilesInPlace(std::vector<double>* v_ptr,
   }
 
   return results;
-}
-
-template <>
-float internal::LookUpAtanTable(float z) {
-  z = (z + 1.0f) * internal::kApproxIntervals;
-  const int x = static_cast<int>(z);
-  float y = z - x;
-  return internal::kAtanTableFloat[3 * x] +
-         (internal::kAtanTableFloat[3 * x + 1] - internal::kAtanTableFloat[3 * x + 2] * y) * y;
-}
-
-double GradientDescent(std::vector<double>* x, std::function<double(const std::vector<double>&)> f,
-                       std::function<std::vector<double>(const std::vector<double>&)> gradient,
-                       double error) {
-  CHECK(x != nullptr);
-  CHECK_GT(error, 0);
-  double y = f(*x);
-  double step = error;
-  while (true) {
-    auto grad = gradient(*x);
-    double l_infinity_norm = LInfinityNorm(grad);
-    if (l_infinity_norm < 1e-10) {
-      break;
-    }
-    std::vector<double> x1 = LinearTransform(*x, -step, grad);
-    double y1 = f(x1);
-    if (y1 < y) {
-      while (true) {
-        step *= 2;
-        std::vector<double> x2 = LinearTransform(*x, -step, grad);
-        double y2 = f(x2);
-        if (y2 >= y1) {
-          break;
-        }
-        x1.swap(x2);
-        y1 = y2;
-      }
-    } else {
-      while (true) {
-        step /= 2;
-        x1 = LinearTransform(*x, -step, grad);
-        y1 = f(x1);
-        if (y1 < y) {
-          break;
-        }
-        if (step < error / l_infinity_norm) {
-          return y;
-        }
-      }
-    }
-    x->swap(x1);
-    y = y1;
-  }
-  return y;
 }
 
 }  // namespace math
