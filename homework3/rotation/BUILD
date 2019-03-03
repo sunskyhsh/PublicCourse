@@ -9,6 +9,15 @@ cc_library(
     ],
 )
 
+cc_binary(
+    name = "check",
+    srcs = ["check.cc"],
+    deps = [
+        ":rotation",
+        "@eigen//:eigen",
+    ],
+)
+
 cc_test(
     name = "rotation_test",
     srcs = ["rotation_test.cc"],

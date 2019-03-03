@@ -6,5 +6,7 @@ cc_binary(
     deps = [
         "@opencv//:core",
         "@opencv//:highgui",
+        "@opencv//:imgcodecs",
+        "@opencv//:imgproc",
     ],
 )

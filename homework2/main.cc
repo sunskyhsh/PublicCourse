@@ -27,7 +27,7 @@ int main() {
   std::cout << "Ground points separated." << std::endl;
 
   // Task 3: Image color manipulation
-  cv::Mat image1;
+  cv::Mat image1, image2;
   // image 1
   image1 = cv::imread("/home/sunsky/repo/PublicCourse/homework2/sample_data/GigECameraDeviceTelephoto/0.jpg", 1);
   if (!image1.data)        //判断图像载入是否成功  
@@ -53,9 +53,9 @@ int main() {
 
   // Task 4: Lane boundary detection
   laneDetect(image1);
-  cv::imwrite("/home/sunsky/repo/PublicCourse/homework2/sample_data/GigECameraDeviceTelephoto/output.jpg", image1)
+  cv::imwrite("/home/sunsky/repo/PublicCourse/homework2/sample_data/GigECameraDeviceTelephoto/output.jpg", image1);
   laneDetect(image2);
-  cv::imwrite("/home/sunsky/repo/PublicCourse/homework2/sample_data/GigECameraDeviceWideAngle/output.jpg", image2)
+  cv::imwrite("/home/sunsky/repo/PublicCourse/homework2/sample_data/GigECameraDeviceWideAngle/output.jpg", image2);
 
   return 0;
 }
@@ -74,7 +74,7 @@ void laneDetect(cv::Mat &src) {
   if (!src.data)        //判断图像载入是否成功  
   {  
     std::cout << "Fail to load image!!" << std::endl;  
-    return 0;  
+    return;  
   }
   cv::Mat detected_edges, src_gray = cv::Mat::zeros(src.rows, src.cols, CV_8UC1);
   cvtGray(src, src_gray);
